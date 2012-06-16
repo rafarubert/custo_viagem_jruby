@@ -52,14 +52,12 @@
 					<h2>Onde quer chegar?</h2>
 				
 					<label for="origem">Origem</label>
-					<select name="origem" id="origem">
-						<option>Selecione</option>
-					</select>
+                       
+						<%= select_tag 'origin[search]', options_for_select(@airports.collect{ |k,v| [v,k] })%>
+
 					
 					<label for="destino">Destino</label>
-					<select name="destino" id="destino">
-						<option>Selecione</option>
-					</select>
+					<%= select_tag 'destination[search]', options_for_select(@airports.collect{ |k,v| [v,k] })%>
 					
 					<label for="partida" style="margin-bottom:5px;">Per&iacute;odo</label>
 					<input type="text" name="partida" id="returno" style="width:85px;"> at&eacute;
