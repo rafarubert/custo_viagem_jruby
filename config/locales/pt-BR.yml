@@ -1,5 +1,7 @@
 pt-BR:
   date:
+    input:
+      formats: [:default, :long, :short]
     abbr_day_names:
     - Dom
     - Seg

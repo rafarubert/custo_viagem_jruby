@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
     
     <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 
     <!--[if lt IE 9]>
         <%= stylesheet_link_tag "ie", :media => "all" %>
@@ -44,25 +44,29 @@
                 </h1>
             </div>
 
-
             <div class="five columns">
-                <form action="#teste" method="post">
-                
-                    <h2>Onde quer chegar?</h2>
-                
-                    <%= label_tag 'search[origin]', 'Origem' %>
-										<%= select_tag 'search[origin]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
+              <%= form_for @trip do |f| %>
+                <h2>Onde quer chegar?</h2>
+                <% if @trip.errors.any? %>
+                  <h5>Erro</h5>
+                  <ul class="disc">
+                    <% @trip.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
 
-										<%= label_tag 'search[destination]', 'Destino' %>
-										<%= select_tag 'search[destination]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
-                    
-                    <%= label_tag 'search[partida]', 'Período' %>
-                    <%= text_field_tag 'search[partida]', '', :class => 'date', :style => 'width:125px;' %> at&eacute; 
-                    <%= text_field_tag 'search[retorno]', '', :class => 'date', :style => 'width:125px;' %>
-                    
-                    <%= submit_tag 'Pesquisar', :class => 'nice radius small blue button', :style => 'width:300px;' %>
-                
-                </form>
+                <%= f.label :origin %>
+                <%= f.select :origin, options_for_select(@airports.collect{ |k,v| [v,k] }), :prompt => '- Selecione -' %>
+                <%= f.label :destination %>
+                <%= f.select :destination, options_for_select(@airports.collect{ |k,v| [v,k] }), :prompt => '- Selecione -' %>
+
+                <%= label_tag 'Período' %>
+                <%= f.text_field :initial_date, :class => 'date', :style => 'width:125px;' %> at&eacute; 
+                <%= f.text_field :final_date, :class => 'date', :style => 'width:125px;' %>
+
+                <%= submit_tag 'Pesquisar', :class => 'nice radius small blue button', :style => 'width:300px;' %>
+              <% end %>
             </div>
         </div>
         

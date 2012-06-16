@@ -1,6 +1,8 @@
 CustoViagem::Application.routes.draw do
-  root :to => 'welcome#index'
-  
+  root :to => 'trips#new'
+
+  resources :trips
+
   match '*path', :to => 'error#not_found'
   # The priority is based upon order of creation:
   # first created -> highest priority.

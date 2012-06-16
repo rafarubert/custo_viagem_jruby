@@ -15,23 +15,17 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-pt-BR
 //= require_tree .
+
 $(function(){
-	$('.date').datepicker({
-		defaultDate: "+1w",
-		showButtonPanel: true,
-		onSelect: function(selectDate) {
-			if ($(this).attr('id') == 'search_partida') {
-				$('#search_retorno').datepicker("option", "minDate", selectDate)
-			} else {
-				$('#search_partida').datepicker("option", "maxDate", selectDate)
-			}
-		}
-	});
-	$('form').submit(function(){
-		if ($('#search_origin').val() == $('#search_destination').val()){
-			alert('Você precisa selecionar um destino diferente!');
-			$('#search_destination').focus();
-			return false;
-		}
-	});
+  $('.date').datepicker({
+    defaultDate: "+1w",
+    showButtonPanel: true,
+    onSelect: function(selectDate) {
+      if ($(this).attr('id') == 'search_partida') {
+        $('#search_retorno').datepicker("option", "minDate", selectDate)
+      } else {
+        $('#search_partida').datepicker("option", "maxDate", selectDate)
+      }
+    }
+  });
 })

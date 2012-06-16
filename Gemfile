@@ -6,6 +6,7 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'enumerate_it'
+gem "delocalize", :git => "git://github.com/clemens/delocalize.git"
 
 gem 'nokogiri'
 
