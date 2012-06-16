@@ -3,6 +3,7 @@ class TripsController < ApplicationController
   before_filter :load_trip
   
   def index
+<<<<<<< HEAD
     @trip.save
     @hotels = Hotel.find_by_city(Airport.value_for(@trip.destination))
     begin
@@ -18,6 +19,11 @@ class TripsController < ApplicationController
     @top = Trip.top18
   end
   
+=======
+    @passages = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
+  end
+  
+>>>>>>> Busca de trip
   private
   
   def load_trip

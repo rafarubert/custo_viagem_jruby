@@ -3,16 +3,16 @@ require 'open-uri'
 require 'json'
 
 class Passage
-  
+
   def self.find(origin = String.new, destination = String.new, initial_date = String.new, final_date = String.new)
     build = []
     scales = {'noScale' => 0, 'oneScale' => 1, 'twoPlusScales' => 2}
 
     response = open("http://www.decolar.com/shop/flights/data/search/roundtrip/#{origin}/#{destination}/#{initial_date}/#{final_date}/1/0/0/FARE/ASCENDING/NA/NA/NA/NA/NA", "UserAgent" => "Ruby-Wget").read
     return nil if response.status == 200
-    
+
     result = JSON.parse(response)
-    
+
     if result['result']['matrix']
       result['result']['matrix'].each do |airline|
         ['noScale','oneScale','twoPlusScales'].each do |scale|
@@ -31,9 +31,9 @@ class Passage
         end # end if ariline
       end # end if matrix each
     end # end if matrix
-    
+
     return result if build.size == 0
-    
+
     if result['result']['status']
       result['result']['messages'].each do |message|
         raise 'Dias de antecipação para venda atingiu o limite permitido.' if message['code'] = 'ANTICIPATION_DAYS_REACHED'
@@ -43,5 +43,5 @@ class Passage
 
     build
   end
-  
+
 end
