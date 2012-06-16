@@ -21,10 +21,10 @@ $(function(){
     defaultDate: "+1w",
     showButtonPanel: true,
     onSelect: function(selectDate) {
-      if ($(this).attr('id') == 'search_partida') {
-        $('#search_retorno').datepicker("option", "minDate", selectDate)
+      if ($(this).attr('id') == 'trip_initial_date') {
+        $('#trip_final_date').datepicker("option", "minDate", selectDate)
       } else {
-        $('#search_partida').datepicker("option", "maxDate", selectDate)
+        $('#trip_initial_date').datepicker("option", "maxDate", selectDate)
       }
     }
   });

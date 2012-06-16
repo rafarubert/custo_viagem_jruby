@@ -7,7 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'enumerate_it'
 gem "delocalize", :git => "git://github.com/clemens/delocalize.git"
-
+gem 'foursquare'
 gem 'nokogiri'
 
 group :development do 

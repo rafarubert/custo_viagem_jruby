@@ -45,7 +45,7 @@
             </div>
 
             <div class="five columns">
-              <%= form_for @trip, :url => { :action => :create }, :method => :post do |f| %>
+              <%= form_for @trip, :url => { :action => :index }, :method => :get do |f| %>
                 <h2>Onde quer chegar?</h2>
                 <% if @trip.errors.any? %>
                   <h5>Erro</h5>
@@ -57,9 +57,9 @@
                 <% end %>
 
                 <%= f.label :origin %>
-                <%= f.select :origin, options_for_select(@airports.collect{ |k,v| [v,k] }), :prompt => '- Selecione -' %>
+                <%= f.select :origin, options_for_select(@airports.collect{ |k,v| [v,k] }, @trip.origin || nil), :prompt => '- Selecione -' %>
                 <%= f.label :destination %>
-                <%= f.select :destination, options_for_select(@airports.collect{ |k,v| [v,k] }), :prompt => '- Selecione -' %>
+                <%= f.select :destination, options_for_select(@airports.collect{ |k,v| [v,k] }, @trip.destination || nil), :prompt => '- Selecione -' %>
 
                 <%= label_tag 'Período' %>
                 <%= f.text_field :initial_date, :class => 'date', :style => 'width:125px;' %> at&eacute; 

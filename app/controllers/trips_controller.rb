@@ -1,22 +1,15 @@
 class TripsController < ApplicationController
-
-  def new
-    @trip = Trip.new
+  
+  before_filter :load_trip
+  
+  def index
+    @passages = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
   end
-
-  def show
-    @trip = Trip.find(params[:id])
+  
+  private
+  
+  def load_trip
+    @trip = Trip.new(params[:trip] || {})
   end
-
-  def create
-    @trip = Trip.new(params[:trip])
-
-    respond_to do |wants|
-      if @trip.save
-        wants.html { redirect_to(@trip) }
-      else
-        wants.html { render :action => "new" }
-      end
-    end
-  end
+  
 end

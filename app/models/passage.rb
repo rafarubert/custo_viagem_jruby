@@ -2,9 +2,9 @@ require 'open-uri'
 require 'json'
 
 class Passage
-  def find(origin = String.new, destination = String.new, initial_date = String.new, final_date = String.new)
-    build = Hash.new
-
+  def self.find(origin = String.new, destination = String.new, initial_date = String.new, final_date = String.new)
+    build = []
+    scales = {'noScale' => 0, 'oneScale' => 1, 'twoScale' => 2}
     name = String.new
     price = String.new
 
@@ -13,26 +13,26 @@ class Passage
     buffer = open(url, "UserAgent" => "Ruby-Wget").read
 
     result = JSON.parse(buffer)
-
-    result['result']['matrix'].each do |doc|
-      if doc['airline']
-        name = doc['airline']['description'] if doc['airline'] and doc['airline']['description']
-
-        if doc['noScale']
-          doc['noScale']['prices'].each do |price|
-            price.each do |formated|
-              price = formated[1]['amount'] if formated and formated[1] and formated[1]['amount']
+    result['result']['matrix'].each do |airline|
+      ['noScale','oneScale','twoPlusScales'].each do |scale|
+        if airline[scale]
+          
+          airline[scale]['prices'].each do |p|
+            p.each do |f|
+              build << {
+                :name => airline['airline']['description'],
+                :scales => scales[scale],
+                :price => (f[1]['amount'] if f and f[1] and f[1]['amount']),
+                :mask => (f[1]['mask'] if f and f[1] and f[1]['mask'])
+              }
             end
           end
         end
-
       end
 
-      if price and name
-        build[name] = ActionController::Base.helpers.number_to_currency(price, :unit => "R$", :separator => ",",:delimiter => ".")
-      end
     end
 
     build
   end
+  
 end
