@@ -2,13 +2,6 @@ require 'open-uri'
 require 'nokogiri'
 
 class Hotel
-  attr_accessor :name, :price, :trip
-
-  def initialize(name = String.new, value = String.new)
-    @name = name
-    @value = value
-  end
-
   def find_by_city(city)
     build = Hash.new
 
