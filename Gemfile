@@ -7,6 +7,8 @@ gem 'rails', '3.2.6'
 
 gem 'enumerate_it'
 
+gem 'nokogiri'
+
 group :development do 
   gem 'jdbc-sqlite3'
   gem 'activerecord-jdbcsqlite3-adapter'
