@@ -13,7 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
+//= require jquery.ui.datepicker-pt-BR
 //= require_tree .
 $(function(){
-	$('.date').datepicker();
+	$('.date').datepicker({
+		defaultDate: "+1w",
+		showButtonPanel: true,
+		onSelect: function(selectDate) {
+			if ($(this).attr('id') == 'partida') {
+				$('#retorno').datepicker("option", "minDate", selectDate)
+			} else {
+				$('#partida').datepicker("option", "maxDate", selectDate)
+			}
+		}
+	});
 })

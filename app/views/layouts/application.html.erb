@@ -36,7 +36,7 @@
     <div class="container">
 
         <div class="row header">
-            <div class="eight columns">
+            <div class="seven columns">
                 <h1>
                     <span class="custo">Custo</span> 
                     <span class="de">de</span> 
@@ -45,7 +45,7 @@
             </div>
 
 
-            <div class="four columns">
+            <div class="five columns">
                 <form action="#teste" method="post">
                 
                     <h2>Onde quer chegar?</h2>
@@ -57,10 +57,10 @@
 										<%= select_tag 'destination[search]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
                     
                     <label for="partida" style="margin-bottom:5px;">Per&iacute;odo</label>
-                    <input type="text" name="partida" id="returno" style="width:85px;" class="date"> at&eacute;
-                    <input type="text" name="retorno" id="retorno" style="width:85px;" class="date">
+                    <input type="text" name="partida" id="partida" style="width:125px;" class="date"> at&eacute;
+                    <input type="text" name="retorno" id="retorno" style="width:125px;" class="date">
                     
-                    <input type="submit" value="Pesquisar" class="nice radius small blue button" style="width:220px;">
+                    <input type="submit" value="Pesquisar" class="nice radius small blue button" style="width:300px;">
                 
                 </form>
             </div>
