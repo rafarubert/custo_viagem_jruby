@@ -1,0 +1,27 @@
+body{background:url("../images/bg.png");font-family: "Open Sans", "Helvetica Neue", "Helvetica", Arial, sans-serif;font-size:14px;}
+p{font-size:14px;}
+
+form{padding:40px 20px;}
+form *{font-size:18px;}
+form label{margin-bottom:9px;font-size:18px;}
+
+h1{position:relative;margin-top:50px;background:url("../images/aviao.png") no-repeat;background-position:420px 80px ;color:white;height:300px;width:600px;font-size:110px;-webkit-text-shadow:0 1px 1px rgba(0,0,0,0.2);-moz-text-shadow:0 1px 1px rgba(0,0,0,0.2);text-shadow:0 1px 1px rgba(0,0,0,0.2);}
+h2, h3{font-size:24px;color:#00a5ff;font-weight:normal;}
+
+a{color:#0088cc;text-decoration: none;}
+a:hover{color: #005580;text-decoration: underline;}
+
+ul{list-style: none;}
+
+.container{background:url("../images/bg_top.png") top center no-repeat;}
+
+.footer{border-top:1px solid #eee;padding:20px;}
+.footer .four{text-align:right;}
+.footer a{margin-left:15px;}
+
+h1 span{position:absolute;}
+h1 .custo{top:0;left:0;}
+h1 .de{top:70px;left:280px;}
+h1 .viagem{top:150px;left:120px;}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {font-size:18px;font-weight:normal;}
