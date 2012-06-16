@@ -5,6 +5,7 @@ db/schema.rb
 tmp/
 doc/
 config/database.yml
+.idea/
 .DS_Store
 *.sqlite3
 *.lock
