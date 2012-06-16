@@ -7,6 +7,9 @@ gem 'rails', '3.2.6'
 
 gem 'activerecord-jdbcpostgresql-adapter'
 
+gem 'jdbc-sqlite3'
+gem 'activerecord-jdbcsqlite3-adapter'
+
 gem 'jruby-openssl'
 gem 'json'
 
