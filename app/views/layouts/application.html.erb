@@ -50,17 +50,17 @@
                 
                     <h2>Onde quer chegar?</h2>
                 
-                    <label for="origem">Origem</label>
-										<%= select_tag 'origin[search]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
+                    <%= label_tag 'search[origin]', 'Origem' %>
+										<%= select_tag 'search[origin]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
 
-										<label for="destino">Destino</label>
-										<%= select_tag 'destination[search]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
+										<%= label_tag 'search[destination]', 'Destino' %>
+										<%= select_tag 'search[destination]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
                     
-                    <label for="partida" style="margin-bottom:5px;">Per&iacute;odo</label>
-                    <input type="text" name="partida" id="partida" style="width:125px;" class="date"> at&eacute;
-                    <input type="text" name="retorno" id="retorno" style="width:125px;" class="date">
+                    <%= label_tag 'search[partida]', 'Período' %>
+                    <%= text_field_tag 'search[partida]', '', :class => 'date', :style => 'width:125px;' %> at&eacute; 
+                    <%= text_field_tag 'search[retorno]', '', :class => 'date', :style => 'width:125px;' %>
                     
-                    <input type="submit" value="Pesquisar" class="nice radius small blue button" style="width:300px;">
+                    <%= submit_tag 'Pesquisar', :class => 'nice radius small blue button', :style => 'width:300px;' %>
                 
                 </form>
             </div>

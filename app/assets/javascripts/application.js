@@ -20,11 +20,18 @@ $(function(){
 		defaultDate: "+1w",
 		showButtonPanel: true,
 		onSelect: function(selectDate) {
-			if ($(this).attr('id') == 'partida') {
-				$('#retorno').datepicker("option", "minDate", selectDate)
+			if ($(this).attr('id') == 'search_partida') {
+				$('#search_retorno').datepicker("option", "minDate", selectDate)
 			} else {
-				$('#partida').datepicker("option", "maxDate", selectDate)
+				$('#search_partida').datepicker("option", "maxDate", selectDate)
 			}
+		}
+	});
+	$('form').submit(function(){
+		if ($('#search_origin').val() == $('#search_destination').val()){
+			alert('Você precisa selecionar um destino diferente!');
+			$('#search_destination').focus();
+			return false;
 		}
 	});
 })
