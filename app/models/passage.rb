@@ -4,7 +4,7 @@ require 'json'
 class Passage
   def self.find(origin = String.new, destination = String.new, initial_date = String.new, final_date = String.new)
     build = []
-    scales = {'noScale' => 0, 'oneScale' => 1, 'twoScale' => 2}
+    scales = {'noScale' => 0, 'oneScale' => 1, 'twoPlusScales' => 2}
     name = String.new
     price = String.new
 
@@ -16,7 +16,6 @@ class Passage
     result['result']['matrix'].each do |airline|
       ['noScale','oneScale','twoPlusScales'].each do |scale|
         if airline[scale]
-          
           airline[scale]['prices'].each do |p|
             p.each do |f|
               build << {

@@ -8,9 +8,9 @@
     <table>
       <%- @passages.each do |passage| -%>
       <tr>
-        <td><%= passage['name'] %></td>
-        <td><%= passage['scale'] %></td>
-        <td><%= passage['mask'] %> <%= passage['price'] %></td>
+        <td><%= passage[:name] %></td>
+        <td><%= passage[:scales] %></td>
+        <td><%= passage[:mask] %> <%= passage[:price] %></td>
         <td></td>
       </tr>
       <%- end -%>
