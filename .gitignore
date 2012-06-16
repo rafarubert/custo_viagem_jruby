@@ -1,0 +1,12 @@
+/.bundle
+/db/*.sqlite3
+/log/*.log
+bin
+public/images/upload/*
+db/*.sqlite3
+db/schema.rb
+tmp/**/*
+config/database.yml
+nbproject
+.DS_Store
+doc/*
