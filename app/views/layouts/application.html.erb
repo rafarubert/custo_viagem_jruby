@@ -53,16 +53,14 @@
                     <h2>Onde quer chegar?</h2>
                 
                     <label for="origem">Origem</label>
-
-											<%= select_tag 'origin[search]', options_for_select(@airports.collect{ |k,v| [v,k] })%>
-
+										<%= select_tag 'origin[search]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
 
 										<label for="destino">Destino</label>
-										<%= select_tag 'destination[search]', options_for_select(@airports.collect{ |k,v| [v,k] })%>
+										<%= select_tag 'destination[search]', options_for_select(@airports.collect{ |k,v| [v,k] }), :include_blank => '- Selecione -' %>
                     
                     <label for="partida" style="margin-bottom:5px;">Per&iacute;odo</label>
-                    <input type="text" name="partida" id="returno" style="width:85px;"> at&eacute;
-                    <input type="text" name="retorno" id="retorno" style="width:85px;">
+                    <input type="text" name="partida" id="returno" style="width:85px;" class="date"> at&eacute;
+                    <input type="text" name="retorno" id="retorno" style="width:85px;" class="date">
                     
                     <input type="submit" value="Pesquisar" class="nice radius small blue button" style="width:220px;">
                 
@@ -87,7 +85,6 @@
         </div>
     </div>
     <!-- container -->
-
 
 </body>
 </html>
