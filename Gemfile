@@ -5,8 +5,15 @@ gem 'rails', '3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'activerecord-jdbcpostgresql-adapter'
-gem  'activerecord-postgresql-adapter'
+group :development do 
+  gem 'jdbc-sqlite3'
+  gem 'activerecord-jdbcsqlite3-adapter'
+end
+
+group :production do 
+  gem 'activerecord-jdbcpostgresql-adapter'
+  gem  'activerecord-postgresql-adapter'
+end
 
 gem 'jruby-openssl'
 gem 'json'

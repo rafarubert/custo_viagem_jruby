@@ -26,6 +26,9 @@ GEM
     activerecord-jdbcpostgresql-adapter (1.2.2)
       activerecord-jdbc-adapter (~> 1.2.2)
       jdbc-postgres (>= 9.0, < 9.2)
+    activerecord-jdbcsqlite3-adapter (1.2.2)
+      activerecord-jdbc-adapter (~> 1.2.2)
+      jdbc-sqlite3 (~> 3.7.2)
     activerecord-postgresql-adapter (0.0.1)
       pg
     activeresource (3.2.6)
@@ -50,6 +53,7 @@ GEM
     hike (1.2.1)
     i18n (0.6.0)
     jdbc-postgres (9.1.901)
+    jdbc-sqlite3 (3.7.2)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -113,12 +117,13 @@ GEM
 
 PLATFORMS
   java
-  ruby
 
 DEPENDENCIES
   activerecord-jdbcpostgresql-adapter
+  activerecord-jdbcsqlite3-adapter
   activerecord-postgresql-adapter
   coffee-rails (~> 3.2.1)
+  jdbc-sqlite3
   jquery-rails
   jruby-openssl
   json
