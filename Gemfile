@@ -10,11 +10,6 @@ group :development do
   gem 'activerecord-jdbcsqlite3-adapter'
 end
 
-group :production do 
-  gem 'activerecord-jdbcpostgresql-adapter'
-  gem  'activerecord-postgresql-adapter'
-end
-
 gem 'jruby-openssl'
 gem 'json'
 
