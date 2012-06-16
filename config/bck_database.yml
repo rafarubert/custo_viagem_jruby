@@ -1,11 +1,7 @@
 development:
-  adapter: postgresql
+  adapter: sqlite3
   encoding: utf8
-  database: custo_viagem_development
-  username: victorcsv
-  password: 
-  host: localhost
-  port: 5432
+  database: db/development.sqlite3
 
 test:
   adapter: postgresql
