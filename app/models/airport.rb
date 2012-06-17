@@ -29,7 +29,7 @@ class Airport  < EnumerateIt::Base
                    "GYN" => "Goiânia (GO)",
                    "IOS" => "Ilhéus (BA)",
                    "IMP" => "Imperatriz (MA)",
-                   "JPA" => " João Pessoa (PB)",
+                   "JPA" => "João Pessoa (PB)",
                    "JOI" => "Joinville (SC)",
                    "JDO" => "Juazeiro do Norte (CE)",
                    "LDB" => "Londrina (PR)",
