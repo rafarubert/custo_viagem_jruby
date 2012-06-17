@@ -19,7 +19,7 @@ class TripsController < ApplicationController
           render :error
         end
       else
-        wants.html { render :action => "new" }
+        
       end
     end
   end

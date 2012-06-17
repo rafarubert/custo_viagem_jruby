@@ -29,7 +29,7 @@
       <div class="four columns">
         <ul>
       <%- end -%>
-      <li><%= trip.origin %> &gt; <%= trip.destination %></li>
+      <li><%= Airport.value_for(trip.origin) %> &gt; <%= Airport.value_for(trip.destination) %></li>
       <%- c += 1 -%>
     <%- end -%>
     </ul>
