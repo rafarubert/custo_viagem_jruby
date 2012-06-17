@@ -2,7 +2,7 @@
 class Trip < ActiveRecord::Base
   include EnumerateIt
 
-  attr_accessible :destination, :final_date, :initial_date, :origin
+  attr_accessible :destination, :final_date, :initial_date, :origin, :total
 
   has_many :trip_items
 
@@ -10,6 +10,7 @@ class Trip < ActiveRecord::Base
 
   validates :origin, :destination, :initial_date, :final_date, :presence => true
 
+  validates_datetime :initial_date, :after => Date.current
   validates_datetime :final_date, :after => :initial_date
 
   validates_each :origin, :destination do |record, attr, value|
