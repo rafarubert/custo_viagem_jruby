@@ -3,7 +3,19 @@ class TripsController < ApplicationController
   before_filter :load_trip
   
   def index
-    @passages = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
+    @trip.save
+    @hotels = Hotel.find_by_city(Airport.value_for(@trip.destination))
+    begin
+      @passages = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
+      
+    rescue Exception => e
+      puts e.inspect
+      render :error
+    end
+  end
+  
+  def show
+    @top = Trip.top18
   end
   
   private

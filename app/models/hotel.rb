@@ -1,27 +1,22 @@
 require 'open-uri'
 require 'nokogiri'
+require 'uri'
 
 class Hotel
-  def find_by_city(city)
-    build = Hash.new
-
-    original_price = String.new
-    actual_price = String.new
-
-    name = String.new
-    price = String.new
-
-    document = Nokogiri::HTML(open("http://www.hotelurbano.com.br/busca?q=#{city}"))
-
-    document.css('.dados-oferta-mini').each do |doc|
-      name = doc.children.css('.dados-textuais-mini > h2 > span').text
-
-      original_price = doc.children.css('.valor-oferta-mini > p.preco-original-mini').text
-      actual_price =  doc.children.css('.valor-oferta-mini > p.preco-atual-mini').text
-
-      price =  original_price.blank? ? actual_price : original_price
-      price.gsub!(/[a-zA-z]|\ |\$/, '')
-      build[name] = ActionController::Base.helpers.number_to_currency(price, :unit => "R$", :separator => ",",:delimiter => ".")
+  def self.find_by_city(city)
+    build = []
+    document = Nokogiri::HTML(open(URI.escape("http://www.hotelurbano.com.br/busca?q=#{city}")))
+    document.css('div.dados-oferta-mini').each do |doc|
+      name = doc.css('.dados-textuais-mini h2 span').text
+      name = doc.css('.dados-textuais-mini h2').text if name.empty?
+      diarias = doc.css('.dados-textuais-mini .diarias-hospedes-mini .aLeft .tempo_restante').text.gsub(/\s.+/,'')
+      diarias = 1 if diarias.empty?
+      
+      build << {
+        :name => name,
+        :diarias => diarias,
+        :price => ActionController::Base.helpers.number_to_currency(doc.css('.valor-oferta-mini > p.preco-atual-mini').text.gsub!(/[a-zA-z\$\s]/, ''), :unit => "R$", :separator => ",",:delimiter => ".")
+      } if diarias.to_i > 0
     end
 
     build

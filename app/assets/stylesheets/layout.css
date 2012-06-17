@@ -15,6 +15,10 @@ a:hover{color: #005580;text-decoration: underline;}
 
 ul{list-style: none;}
 
+table{background-color:#FFF;}
+table thead tr td{text-align:center;padding:5px;background-color:#d7f6fd;font-weight:bold;}
+table tbody tr:hover td{background:#EEE;}
+
 .container{background:url("bg_top.png") top center no-repeat;}
 
 .footer{border-top:1px solid #eee;padding:20px;}
