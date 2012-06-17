@@ -7,7 +7,7 @@ class Hotel
   def self.find_by_city(city)
     build = []
     response = open(URI.escape("http://www.hotelurbano.com.br/busca?q=#{city}"))
-    return if response.status[0] != '200'
+    return Hash.new if response.status[0] != '200'
 
     document = Nokogiri::HTML(response)
     document.css('div.dados-oferta-mini').each do |doc|
@@ -22,6 +22,8 @@ class Hotel
         :price => ActionController::Base.helpers.number_to_currency(doc.css('.valor-oferta-mini > p.preco-atual-mini').text.gsub!(/[a-zA-z\$\s]/, ''), :unit => "R$", :separator => ",",:delimiter => ".")
       } if diarias.to_i > 0
     end
+    
+    build
   end
   
 end

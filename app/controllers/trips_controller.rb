@@ -10,9 +10,8 @@ class TripsController < ApplicationController
     @trip.save
     begin
       @passages = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
-      @hotels = Hotel.find_by_city(Airport.value_for(@trip.destination))
+      @hotels   = Hotel.find_by_city(Airport.value_for(@trip.destination))
     rescue Exception => e
-    #   puts e.inspect
       render :error
     end
   end
