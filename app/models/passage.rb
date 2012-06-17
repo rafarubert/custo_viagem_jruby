@@ -8,9 +8,10 @@ class Passage
     build = []
     scales = {'noScale' => 0, 'oneScale' => 1, 'twoPlusScales' => 2}
 
-    buffer = open("http://www.decolar.com/shop/flights/data/search/roundtrip/#{origin}/#{destination}/#{initial_date}/#{final_date}/1/0/0/FARE/ASCENDING/NA/NA/NA/NA/NA", "UserAgent" => "Ruby-Wget").read
-
-    result = JSON.parse(buffer)
+    response = open("http://www.decolar.com/shop/flights/data/search/roundtrip/#{origin}/#{destination}/#{initial_date}/#{final_date}/1/0/0/FARE/ASCENDING/NA/NA/NA/NA/NA", "UserAgent" => "Ruby-Wget").read
+    return nil if response.status == 200
+    
+    result = JSON.parse(response)
     
     if result['result']['matrix']
       result['result']['matrix'].each do |airline|
