@@ -97,6 +97,11 @@ pt-BR:
       month: Mês
       second: Segundo
       year: Ano
+  validates_timeliness:
+    error_value_formats:
+      date: "%d/%m/%Y"
+      time: "%H:%M h"
+      datetime: "%d/%m/%Y"
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:
@@ -211,11 +216,6 @@ pt-BR:
     pm: ''
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
-    validates_timeliness:
-      error_value_formats:
-        date: "%d/%m/%Y"
-        time: "%H:%M h"
-        datetime: "%d/%m/%Y, %H:%M h"
     errors:
       <<: *errors
   activerecord:
