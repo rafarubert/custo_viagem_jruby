@@ -3,7 +3,7 @@ class TripsController < ApplicationController
   before_filter :load_trip
 
   def new
-
+    @top = Trip.top18
   end
 
   def create
