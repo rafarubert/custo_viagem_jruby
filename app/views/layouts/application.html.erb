@@ -47,7 +47,7 @@
             <div class="five columns">
               <%= form_for @trip, :url => {:action => :create } do |f| %>
                 <h2>Onde quer chegar?</h2>
-                <% if @trip.errors.any? %>
+                <% if @trip and @trip.errors.any? %>
                   <ul class="disc">
                     <% @trip.errors.full_messages.each do |msg| %>
                       <li><%= msg %></li>
