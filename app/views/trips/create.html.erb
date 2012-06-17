@@ -16,7 +16,7 @@
         <%- if @passages.size > 0 -%>
         <%- @passages.each do |passage| -%>
         <tr>
-          <td><input type="radio" name="passage" data-value="<%= passage[:price] %>"></td>
+          <td><input type="radio" class="passage" name="passage" data-value="<%= passage[:price] %>"></td>
           <td><%= passage[:name] %></td>
           <td><%= passage[:scales] %></td>
           <td><%= passage[:mask] %> <%= passage[:price] %></td>
@@ -47,7 +47,7 @@
         <% if @hotels.size > 0 %>
         <%- @hotels.each do |hotel| -%>
         <tr>
-          <td><input type="radio" name="hospedagem" data-value="<%= hotel[:price] %>"></td>
+          <td><input type="radio" name="hospedagem" class="hosped" data-value="<%= hotel[:price] %>"></td>
           <td><%= hotel[:name] %></td>
           <td><%= hotel[:diarias] %></td>
           <td><%= hotel[:price] %></td>
@@ -97,11 +97,11 @@
     <table style="width:100%">
       <tr>
         <td>Passagem</td>
-        <td class="passagem">R$ 0,00</td>
+        <td class="passagem">R$ <span>0</span></td>
       </tr>
       <tr>
         <td>Hospedagem</td>
-        <td class="hospedagem">R$ 0,00</td>
+        <td class="hospedagem">R$ <span>0</span></td>
       </tr>
       <tr>
         <td>Refeições</td>
@@ -109,7 +109,7 @@
       </tr>
       <tr>
         <td>Total</td>
-        <td><strong class="total">R$ 0,00</strong></td>
+        <td><strong class="total">R$ <span>0.00</span></strong></td>
       </tr>
     </table>
   </div>
