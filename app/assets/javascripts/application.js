@@ -27,5 +27,21 @@ $(function(){
         $('#trip_initial_date').datepicker("option", "maxDate", selectDate)
       }
     }
-  });
+  }); 
+	var total_voos = 0;
+	var total_hotel = 0;
+	var total_calc = 0;
+		jQuery(".passage").bind("click",function(){                        
+			total_voos = parseFloat(jQuery(this).attr("data-value").replace(",","").replace(".",""));
+			jQuery(".passagem span").html(total_voos);
+			jQuery(".total span").html(total_voos+total_calc);
+		});
+		
+		jQuery(".hosped").bind("click",function(){
+			total_hotel = parseFloat(jQuery(this).attr("data-value").replace(",","").replace(".",""));
+			alert(total_hotel);
+			jQuery(".hospedagem span").html(total_hotel);
+			jQuery(".total span").html(parseFloat(total_voos)+parseFloat(total_calc)+parseFloat(total_hotel));
+		});
+
 })
