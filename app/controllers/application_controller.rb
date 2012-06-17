@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def defaults
-    @airports = Airport.to_a.sort
+    @airports = Airport.to_a.sort_by{|a| a[0]}
   end
 end
