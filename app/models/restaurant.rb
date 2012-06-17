@@ -9,7 +9,7 @@ class Restaurant
     city.gsub!(" ", "-")
     city.downcase!
     
-    # city = 'fortaleza'
+    city = 'fortaleza'
     
     response = open(URI.escape("http://vejabrasil.abril.com.br/#{city}/busca/?area=estabelecimentos&tipo=restaurantes"))
     return Hash.new if response.status[0] != '200'

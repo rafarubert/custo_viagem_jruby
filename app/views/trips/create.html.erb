@@ -9,7 +9,7 @@
           <td width="1"></td>
           <td>Empresa</td>
           <td>Escalas</td>
-          <td>Valor</td>
+          <td width="80">Valor</td>
         </tr>
       </thead>
       <tbody>
@@ -40,7 +40,7 @@
           <td width="1"></td>
           <td>Local</td>
           <td>Diárias</td>
-          <td>Valor</td>
+          <td width="80">Valor</td>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +49,7 @@
         <tr>
           <td><input type="radio" name="hospedagem" class="hosped" data-value="<%= hotel[:price] %>"></td>
           <td><%= hotel[:name] %></td>
-          <td><%= hotel[:diarias] %></td>
+          <td><%= hotel[:diarias] %> Diárias</td>
           <td><%= hotel[:price] %></td>
         </tr>
         <%- end -%>
@@ -70,7 +70,7 @@
           <tr>
             <td width="1"></td>
             <td>Local</td>
-            <td>Valor</td>
+            <td width="80">Valor</td>
           </tr>
         </thead>
         <tbody>
