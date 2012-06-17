@@ -2,7 +2,7 @@
 class Trip < ActiveRecord::Base
   include EnumerateIt
 
-  attr_accessible :destination, :final_date, :initial_date, :origin
+  attr_accessible :destination, :final_date, :initial_date, :origin, :total
 
   has_many :trip_items
 
