@@ -45,7 +45,7 @@
             </div>
 
             <div class="five columns">
-              <%= form_for @trip, :url => {:action => :create } do |f| %>
+              <%= form_for @trip, :url => {:action => :create }, :method => :post do |f| %>
                 <h2>Onde quer chegar?</h2>
                 <% if @trip and @trip.errors.any? %>
                   <ul class="disc">

@@ -1,4 +1,4 @@
 class TripItem < ActiveRecord::Base
   belongs_to :trip
-  attr_accessible :accepted, :key, :value, :options, :type
+  attr_accessible :key, :value, :options, :service, :trip_id
 end

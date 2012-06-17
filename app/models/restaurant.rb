@@ -4,15 +4,19 @@ require 'nokogiri'
 class Restaurant
   #parse: fortaleza or porto-alegre
   #TODO: fix page status 404
-  def find_by_city(city = String.new)
-    url = "http://vejabrasil.abril.com.br/#{city}/busca/?area=estabelecimentos&tipo=restaurantes"
+  def self.find_by_city(city = String.new)
+    city = city.split(" - ")[0]
+    city.gsub!(" ", "-")
+    city.downcase!
+    
+    # city = 'fortaleza'
+    
+    response = open(URI.escape("http://vejabrasil.abril.com.br/#{city}/busca/?area=estabelecimentos&tipo=restaurantes"))
+    return Hash.new if response.status[0] != '200'
 
-    build = Hash.new
+    build = []
 
-    name = String.new
-    price = String.new
-
-    document = Nokogiri::HTML(open(url))
+    document = Nokogiri::HTML(response)
 
     document.css('#results > .box').each do |doc|
       doc.children.css('h3').each do |restaurant|
@@ -35,7 +39,10 @@ class Restaurant
             price = ActionController::Base.helpers.number_to_currency(price, :unit => "R$", :separator => ",",:delimiter => ".")
 
             if name and price
-              build[name] = price
+              build << {
+                :name => name,
+                :price => price
+              }
             end
           end
         end

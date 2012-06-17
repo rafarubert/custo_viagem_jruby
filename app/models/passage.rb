@@ -6,7 +6,7 @@ class Passage
 
   def self.find(origin = String.new, destination = String.new, initial_date = String.new, final_date = String.new)
     build = []
-    scales = {'noScale' => 0, 'oneScale' => 1, 'twoPlusScales' => 2}
+    scales = {'noScale' => 'Direto', 'oneScale' => '1 Escala', 'twoPlusScales' => '2 Escalas' }
 
     result = JSON.parse(open("http://www.decolar.com/shop/flights/data/search/roundtrip/#{origin}/#{destination}/#{initial_date}/#{final_date}/1/0/0/FARE/ASCENDING/NA/NA/NA/NA/NA", "UserAgent" => "Ruby-Wget").read)
 

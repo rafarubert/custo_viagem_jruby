@@ -13,6 +13,7 @@
         </tr>
       </thead>
       <tbody>
+        <%- if @passages.size > 0 -%>
         <%- @passages.each do |passage| -%>
         <tr>
           <td><input type="radio" name="passage" data-value="<%= passage[:price] %>"></td>
@@ -21,10 +22,13 @@
           <td><%= passage[:mask] %> <%= passage[:price] %></td>
         </tr>
         <%- end -%>
+        <%- else -%>
+        <tr>
+          <td colspan="4">Nenhum vôo foi encontrado de ida e volta para o destino selecionado.</td>
+        </tr>
+        <%- end -%>
       </tbody>
     </table>
-    <%- else -%>
-
     <%- end -%>
 
     <h3>Hoteis</h3>
@@ -40,6 +44,7 @@
         </tr>
       </thead>
       <tbody>
+        <% if @hotels.size > 0 %>
         <%- @hotels.each do |hotel| -%>
         <tr>
           <td><input type="radio" name="hospedagem" data-value="<%= hotel[:price] %>"></td>
@@ -48,11 +53,43 @@
           <td><%= hotel[:price] %></td>
         </tr>
         <%- end -%>
+        <%- else -%>
+        <tr>
+          <td colspan="4">Nenhum hotel foi encontrado para o destino selecionado.</td>
+        </tr>
+        <%- end -%>
       </tbody>
     </table>
-    <%- else -%>
-
     <%- end -%>
+    
+     <h3>Restaurantes</h3>
+
+      <%- if @restaurants -%>
+      <table style="width:100%;">
+        <thead>
+          <tr>
+            <td width="1"></td>
+            <td>Local</td>
+            <td>Valor</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @restaurants.size > 0 %>
+          <%- @restaurants.each do |restaurant| -%>
+          <tr>
+            <td><input type="radio" name="hospedagem" data-value="<%= restaurant[:price] %>"></td>
+            <td><%= restaurant[:name] %></td>
+            <td><%= restaurant[:price] %></td>
+          </tr>
+          <%- end -%>
+          <%- else -%>
+          <tr>
+            <td colspan="3">Nenhum restaurante foi encontrado para esse destino.</td>
+          </tr>
+          <%- end -%>
+        </tbody>
+      </table>
+      <%- end -%>
 
   </div>
   <div class="five columns">

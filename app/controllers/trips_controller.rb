@@ -8,10 +8,11 @@ class TripsController < ApplicationController
 
   def create
     @trip.save
+    @restaurants = Restaurant.find_by_city(Airport.value_for(@trip.destination))
     begin
-      @passages = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
-      @hotels   = Hotel.find_by_city(Airport.value_for(@trip.destination))
-
+      @passages    = Passage.find(@trip.origin, @trip.destination, @trip.initial_date, @trip.final_date)
+      @hotels      = Hotel.find_by_city(Airport.value_for(@trip.destination))
+      
       if @trip.id
         @passages.each do |passage|
           @trip.trip_items << TripItem.new(
@@ -24,7 +25,7 @@ class TripsController < ApplicationController
         end
 
         @hotels.each do |hotel|
-          TripItem.create(
+          @trip.trip_items << TripItem.new(
             :key => hotel[:name],
             :value => hotel[:scales],
             :options => hotel[:scales],
@@ -37,10 +38,11 @@ class TripsController < ApplicationController
     rescue Exception => e
       render :error
     end
+
   end
-
+  
   private
-
+  
   def load_trip
     @trip = Trip.new(params[:trip] || {})
   end
