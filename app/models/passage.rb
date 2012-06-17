@@ -29,7 +29,7 @@ class Passage
       end # end if matrix each
     end # end if matrix
 
-    return result if build.size == 0
+    return [] if build.size == 0
 
     if result['result']['status']
       result['result']['messages'].each do |message|
