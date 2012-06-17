@@ -7,7 +7,8 @@ class Hotel
   def self.find_by_city(city)
     build = []
     response = open(URI.escape("http://www.hotelurbano.com.br/busca?q=#{city}"))
-    return nil if response.status == 200
+    return if response.status[0] != '200'
+
     document = Nokogiri::HTML(response)
     document.css('div.dados-oferta-mini').each do |doc|
       name = doc.css('.dados-textuais-mini h2 span').text
