@@ -14,3 +14,5 @@
  *= require bootstrap
  *= require layout
  */
+
+.field_with_errors { display: inline; }

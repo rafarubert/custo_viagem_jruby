@@ -1,5 +1,5 @@
 CustoViagem::Application.routes.draw do
   resources :trips
-  root :to => 'trips#show'
+  root :to => 'trips#new'
   match '*path', :to => 'error#not_found'
 end

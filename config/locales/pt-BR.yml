@@ -116,6 +116,15 @@ pt-BR:
       not_a_number: não é um número
       not_an_integer: não é um número inteiro
       odd: deve ser ímpar
+      invalid_date: "não é uma data válida"
+      invalid_time: "não é uma hora válida"
+      invalid_datetime: "não é uma data e hora válida"
+      is_at: "deve ser %{restriction}"
+      before: "deve ser antes de %{restriction}"
+      on_or_before: "deve ser em ou antes de %{restriction}"
+      after: "deve ser depois de %{restriction}"
+      on_or_after: "deve ser em ou depois de %{restriction}"
+      not_between: "deve ser antes de %{start_restriction} ou depois de %{end_restriction}"
       record_invalid: ! 'A validação falhou: %{errors}'
       taken: já está em uso
       too_long: ! 'é muito longo (máximo: %{count} caracteres)'
@@ -202,8 +211,19 @@ pt-BR:
     pm: ''
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
+    validates_timeliness:
+      error_value_formats:
+        date: "%d/%m/%Y"
+        time: "%H:%M h"
+        datetime: "%d/%m/%Y, %H:%M h"
     errors:
       <<: *errors
   activerecord:
+    attributes:
+      trip:
+        origin: 'Origem'
+        destination: 'Destino'
+        initial_date: 'Partida'
+        final_date: 'Retorno'
     errors:
       <<: *errors

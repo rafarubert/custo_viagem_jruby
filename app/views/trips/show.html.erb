@@ -1,37 +1,79 @@
 <div class="row">
-  <div class="twelve columns">
-    <h3>Sobre</h3>
-    <p>
-      Voc&ecirc; gostaria de viajar mas n&atilde;o sabe quanto vai custar?<br/>
-      <br/>
-      Com o "custo de viagem" podemos calcular quanto vai gastar com passagens, hospedagem e at&eacute; mesmo alimenta&c&ccedil;&atilde;o.
-      Basta escolher a origem e o destino do passeio, o per&iacute;odo que vai ser realizado, e n&oacute;s fazemos o resto para voc&ecirc;.
-    </p>
-  </div>
-</div>
+  <div class="seven columns">
+    <h3>Vools</h3>
 
-<div class="row">
-  <div class="twelve columns">
-    <br/>
-    <h3>Destinos mais procurados</h3>
-  </div>
-</div>
+    <%- if @passages -%>
+    <table style="width:100%;">
+      <thead>
+        <tr>
+          <td width="1"></td>
+          <td>Empresa</td>
+          <td>Escalas</td>
+          <td>Valor</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @passages.each do |passage| -%>
+        <tr>
+          <td><input type="radio" name="passage" data-value="<%= passage[:price] %>"></td>
+          <td><%= passage[:name] %></td>
+          <td><%= passage[:scales] %></td>
+          <td><%= passage[:mask] %> <%= passage[:price] %></td>
+        </tr>
+        <%- end -%>
+      </tbody>
+    </table>
+    <%- else -%>
 
-<div class="row">
-  <div class="four columns">
-    <ul>
-    <%- c = 1; -%>
-    <%- @top.each do |trip| -%>
-      <%- if c == 4 -%>
-      <%- c = 1 -%>
-        </ul>
-      </div>
-      <div class="four columns">
-        <ul>
-      <%- end -%>  
-      <li><%= trip.origin %> &gt; <%= trip.destination %></li>
-      <%- c += 1 -%>
     <%- end -%>
-    </ul>
+
+    <h3>Hoteis</h3>
+
+    <%- if @hotels -%>
+    <table style="width:100%;">
+      <thead>
+        <tr>
+          <td width="1"></td>
+          <td>Local</td>
+          <td>Diárias</td>
+          <td>Valor</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @hotels.each do |hotel| -%>
+        <tr>
+          <td><input type="radio" name="hospedagem" data-value="<%= hotel[:price] %>"></td>
+          <td><%= hotel[:name] %></td>
+          <td><%= hotel[:diarias] %></td>
+          <td><%= hotel[:price] %></td>
+        </tr>
+        <%- end -%>
+      </tbody>
+    </table>
+    <%- else -%>
+
+    <%- end -%>
+
+  </div>
+  <div class="five columns">
+    <h3>Detalhes</h3>
+    <table style="width:100%">
+      <tr>
+        <td>Passagem</td>
+        <td class="passagem">R$ 0,00</td>
+      </tr>
+      <tr>
+        <td>Hospedagem</td>
+        <td class="hospedagem">R$ 0,00</td>
+      </tr>
+      <tr>
+        <td>Refeições</td>
+        <td class="refeicoes">R$ 0,00</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><strong class="total">R$ 0,00</strong></td>
+      </tr>
+    </table>
   </div>
 </div>

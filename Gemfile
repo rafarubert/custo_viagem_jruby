@@ -9,6 +9,7 @@ gem 'enumerate_it'
 gem "delocalize", :git => "git://github.com/clemens/delocalize.git"
 gem 'foursquare'
 gem 'nokogiri'
+gem 'validates_timeliness', '~> 3.0.2'
 
 group :development do 
   gem 'jdbc-sqlite3'
