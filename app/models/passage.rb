@@ -8,7 +8,9 @@ class Passage
     name = String.new
     price = String.new
 
-    url = "http://www.decolar.com/shop/flights/data/search/roundtrip/#{origin}/#{destination}/#{initial_date}/#{final_date}/1/0/0/FARE/ASCENDING/NA/NA/NA/NA/NA"
+    url = "http://www.decolar.com/shop/flights/data/search/roundtrip/"+
+    "#{origin}/#{destination}/#{initial_date}/#{final_date}/1/0/"+
+    "0/FARE/ASCENDING/NA/NA/NA/NA/NA"
 
     buffer = open(url, "UserAgent" => "Ruby-Wget").read
 
