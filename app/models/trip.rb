@@ -2,9 +2,11 @@
 class Trip < ActiveRecord::Base
   include EnumerateIt
 
-  attr_accessible :destination, :final_date, :initial_date, :origin, :total
+  attr_accessible :destination, :final_date, :initial_date, :origin, :total, :trip_item_attributes
 
   has_many :trip_items
+
+  accepts_nested_attributes_for :trip_items
 
   scope :top18, select('count(*) as total, trips.origin, trips.destination').group('trips.origin, trips.destination').order('total desc')
 
